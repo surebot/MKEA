@@ -1,0 +1,68 @@
+product model
+{
+  "_id": "1",
+  "product_type": "tables",
+  "sizes": ["s","m","l"],
+  "colors": ["red","green","blue"],
+  "availability": "in stock",
+  "description": "this is a table",
+  "photos": "https://www.ikea.com/blabla.png",
+  "assemble_guide_link": "https://www.ikea.com/blabla.png",
+}
+Feel free to add here specific products here:
+
+Send a gallery:
+
+carousel element
+{
+    "messages": [
+        {
+          "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"generic",
+              "elements":[
+                {
+                  "title":"Chair",
+                  "image_url": "http://petersapparel.parseapp.com/img/item100-thumb.png",
+                  "subtitle": "Cool IKEA chair",
+                  "buttons":[
+                    {
+                      "type":"web_url",
+                      "url":"http://www.ikea.com",
+                      "title":"View Item"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+    ]
+}
+
+
+users model
+{
+  "_id": "1",
+  "phone": "555-555-5555",
+  "e-mail": "Chuck.Norris@wayofthedragon.com",
+  "family_card": "123456789",
+  "login_code": "15056602_360979400916885_4582865250272935936_n",
+  "password": "password",
+  "favorite_store": "Hong Kong",
+  "latest_purchase": [product_array],
+  "wishlist: "[Wishlist array]
+}
+Feel free to add here specific users here:
+
+
+stores model
+{
+  "_id": "1",
+  "address": "address",
+  "opening_hours": "",
+  "phone": "555-555-5555",
+  "google_maps": "https://www.ikea.com/blabla.png",
+}
+Feel free to add here specific stores here:
