@@ -1,80 +1,155 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
 
-# MKEA
+# Parameters API
+In this installment of the API Blueprint course we will discuss how to describe URI parameters.
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+But first let's add more messages to our system. For that we would need
+introduce an message identifier – id. This id will be our parameter when
+communicating with our API about messages.
 
-## Questions Collection [/questions]
+# Data Structures
 
-### List All Questions [GET]
+## storeGentofte (object)
++ id: 1 (number, required)
++ name: Gentofte (string)
++ address
++ opening_hours
++ phone
++ google_maps
++ products (array[chair])
+
+## storeOslo (object)
++ id: 2 (number, required)
++ text: Oslo (string)
++ user (Kurt) - Author of the blog post.
+
+## chair (object)
++ product_type: chair
++ sizes: medium
++ colors: red
++ availability: available
++ description: pretty cool chair
++ photos: url
++ assemble_guide_link: url
+
+
+## chairFB (object)
+
++ title:"Classic White T-Shirt",
++ image_url:"http://petersapparel.parseapp.com/img/item100-thumb.png",
++ subtitle:"Soft white cotton t-shirt is back in style",
++ buttons:[
+    {
+      + type: "web_url",
+      + url: "https://petersapparel.parseapp.com/view_item?item_id=100",
+      + title: "View Item"
+    }
+  ]
+}
+
+## Boba (object)
++ name: Boba Fett
++ email: fett@intergalactic.com
+
+## Kurt (object)
++ name: Kurt Ravn
++ email: fett@intergalactic.com
+
+
+# stores [/stores]
+
+## Retrieve all stores [GET]
++ Response 200 (application/json)
+    + Attributes (array[storeGentofte,storeOslo ])
+
+# gentofte [/stores/gentofte]
+
+## Retrieve gentofte [GET]
++ Response 200 (application/json)
+    + Attributes (storeGentofte)
+
+## Retrieve gentofte [/stores/gentofte/fb]
++ Response 200 (application/json)
+    + Attributes (storeGentofteFB)
+
+# products [/products/chair/fb]
+## Retrieve chair [GET]
++ Response 200 (application/json)
+    
+        {
+            "messages": [
+                {
+                  "attachment":{
+                    "type":"template",
+                    "payload":{
+                      "template_type":"generic",
+                      "elements":[
+                        {
+                          "title":"Chair",
+                          "image_url": "http://petersapparel.parseapp.com/img/item100-thumb.png",
+                          "subtitle": "Cool IKEA chair",
+                          "buttons":[
+                            {
+                              "type":"web_url",
+                              "url":"http://www.ikea.com",
+                              "title":"View Item"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+            ]
+        }
+    
+    
+
+## a messge [/messages/{id}]
+
++ Parameters
+    + id (number) - The ID of the desired coupon.
+
+### Retrieve a Message [GET]
+
++ Response 200 (application/json)
+
+            {
+              "id": 1,
+              "message": "Gentofte"
+            }
+            
+            {
+              "id": 2,
+              "message": "Valby"
+            }
+
+
+
+## All stores [/stores{?limit}]
+A resource representing all of my messages in the system.
+
+
+### Retrieve all stores [GET]
+
++ Parameters
+
+    + limit (number, optional) - The maximum number of results to return.
+        + Default: `20`
 
 + Response 200 (application/json)
 
         [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
+          {
+            "id": 1,
+            "message": "Hello World!"
+          },
+          {
+            "id": 2,
+            "message": "Time is an illusion. Lunchtime doubly so."
+          },
+          {
+            "id": 3,
+            "message": "So long, and thanks for all the fish."
+          }
         ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
