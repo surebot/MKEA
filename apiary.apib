@@ -72,7 +72,7 @@ communicating with our API about messages.
 + Response 200 (application/json)
     + Attributes (storeGentofteFB)
 
-# products [/products/chair/fb]
+# products/chairs [/products/fb/chairs/]
 ## Retrieve chair [GET]
 + Response 200 (application/json)
     
@@ -85,14 +85,42 @@ communicating with our API about messages.
                       "template_type":"generic",
                       "elements":[
                         {
-                          "title":"Chair",
-                          "image_url": "http://petersapparel.parseapp.com/img/item100-thumb.png",
-                          "subtitle": "Cool IKEA chair",
+                          "title":"STRANDMON | £179 ",
+                          "image_url": "http://www.ikea.com/gb/en/images/products/strandmon-wing-chair-skiftebo-yellow__0325450_pe517970_s4.jpg",
+                          "subtitle": "You can really loosen up and relax in comfort because the high back on this chair provides extra support for your neck.",
                           "buttons":[
                             {
                               "type":"web_url",
                               "url":"http://www.ikea.com",
                               "title":"View Item"
+                            },{
+                                "type": "element_share"
+                            }
+                          ]
+                        },{
+                          "title":"POÄNG | £55",
+                          "image_url": "http://www.ikea.com/gb/en/images/products/po%C3%A4ng-armchair-birch-veneer-ransta-natural__19488_pe104775_s4.jpg",
+                          "subtitle": "Layer-glued bent birch frame gives comfortable resilience.",
+                          "buttons":[
+                            {
+                              "type":"web_url",
+                              "url":"http://www.ikea.com",
+                              "title":"View Item"
+                            },{
+                                "type": "element_share"
+                            }
+                          ]
+                        },{
+                          "title":"KULLABERG | £49",
+                          "image_url": "http://www.ikea.com/gb/en/images/products/kullaberg-swivel-chair-pine-black__0410020_pe577748_s4.jpg",
+                          "subtitle": "A desk chair inspired by old-fashioned industrial-style chairs, complete with modern functions.",
+                          "buttons":[
+                            {
+                              "type":"web_url",
+                              "url":"http://www.ikea.com",
+                              "title":"View Item"
+                            },{
+                                "type": "element_share"
                             }
                           ]
                         }
@@ -103,7 +131,66 @@ communicating with our API about messages.
             ]
         }
     
-    
+
+# products/chairs/red [/products/fb/chairs/red]
+## Retrieve red chair [GET]
++ Response 200 (application/json)
+
+        {
+            "messages": [
+                {
+                  "attachment":{
+                    "type":"template",
+                    "payload":{
+                      "template_type":"generic",
+                      "elements":[
+                        {
+                          "title":"POÄNG | £100 ",
+                          "image_url": "http://www.ikea.com/gb/en/images/products/po%C3%A4ng-rocking-chair-oak-veneer-ransta-red__0138472_pe297885_s4.jpg",
+                          "subtitle": "The frame is made of layer-glued bent birch which is a very strong and durable material.",
+                          "buttons":[
+                            {
+                              "type":"web_url",
+                              "url":"http://www.ikea.com",
+                              "title":"View Item"
+                            },{
+                                "type": "element_share"
+                            }
+                          ]
+                        },{
+                          "title":"SKÅLBERG/SPORREN | £25",
+                          "image_url": "http://www.ikea.com/gb/en/images/products/sk%C3%A5lberg-sporren-swivel-chair-red-black__0309046_pe428450_s4.jpg",
+                          "subtitle": "Your back gets support and extra relief from the built-in lumbar support.",
+                          "buttons":[
+                            {
+                              "type":"web_url",
+                              "url":"http://www.ikea.com",
+                              "title":"View Item"
+                            },{
+                                "type": "element_share"
+                            }
+                          ]
+                        },{
+                          "title":"HENRIKSDAL | £25",
+                          "image_url": "http://www.ikea.com/gb/en/images/products/henriksdal-chair-cover-long-mobacka-red-beige__0372055_pe551321_s4.jpg",
+                          "subtitle": "The washable cover to HENRIKSDAL chair frame is easy to put on and take off.",
+                          "buttons":[
+                            {
+                              "type":"web_url",
+                              "url":"http://www.ikea.com",
+                              "title":"View Item"
+                            },{
+                                "type": "element_share"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+            ]
+        }
+
 
 ## a messge [/messages/{id}]
 
